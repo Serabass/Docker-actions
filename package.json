@@ -1,7 +1,8 @@
 {
   "scripts": {
     "test:ci": "jest --ci --reporters='default' --reporters='./github-actions-reporter'",
-    "test": "jest"
+    "test": "jest",
+    "test:watch": "jest --watchAll"
   },
   "dependencies": {
     "jest": "^27.5.1"
