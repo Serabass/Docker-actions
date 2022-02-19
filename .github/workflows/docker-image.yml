@@ -7,14 +7,18 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  test:
+    runs-on: self-hosted
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Install modules
-      run: npm i
-    - name: Run Jest
-      uses: stefanoeb/jest-action@1.0.4
-    - name: Build the Docker image
-      run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} && docker build . --tag ${{ secrets.DOCKER_HUB_USERNAME }}/node-test:latest && docker push ${{ secrets.DOCKER_HUB_USERNAME }}/node-test -a
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: npm i
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.4
+  
+  build-docker:
+    runs-on: self-hosted
+    steps:
+      - name: Build the Docker image
+        run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} && docker build . --tag ${{ secrets.DOCKER_HUB_USERNAME }}/node-test:latest && docker push ${{ secrets.DOCKER_HUB_USERNAME }}/node-test -a
