@@ -11,13 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Run jest (Node 15)
-      with:
-        node-version: '15'
-
-    - run: npm install
-    - run: npm test:ci
-
+    - name: Run Jest
+      uses: stefanoeb/jest-action@1.0.4
     - name: Build the Docker image
       run: docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} -p ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }} && docker build . --tag ${{ secrets.DOCKER_HUB_USERNAME }}/node-test:latest && docker push ${{ secrets.DOCKER_HUB_USERNAME }}/node-test -a
