@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v2
+    - name: Install modules
+      run: npm i
     - name: Run Jest
       uses: stefanoeb/jest-action@1.0.4
     - name: Build the Docker image
