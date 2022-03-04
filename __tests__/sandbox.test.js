@@ -14,7 +14,8 @@ describe('Sandbox', () => {
         expect(parseInt( 0.000005)).toBe(0);
         expect(parseInt(0.0000005)).toBe(5);
         
-        expect(7110 / 100 * 100).not.toBe(7110);
         expect(7120 / 100 * 100)    .toBe(7120);
+        expect(7110 / 100 * 100).not.toBe(7110);
+        expect(7110 / 100 * 100)    .toBe(7109.999999999999);
     });
 });
