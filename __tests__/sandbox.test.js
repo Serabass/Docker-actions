@@ -5,5 +5,13 @@ describe('Sandbox', () => {
         expect(777777777777777777).toBe(777777777777777800);
         expect(777777777777777777 === 777777777777777800).toBeTruthy();
         expect(1 + + + + + + + + + + + + + + + + + + + + + + 1).toBe(2);
+        
+        expect(parseInt(      0.5)).toBe(0);
+        expect(parseInt(     0.05)).toBe(0);
+        expect(parseInt(    0.005)).toBe(0);
+        expect(parseInt(   0.0005)).toBe(0);
+        expect(parseInt(  0.00005)).toBe(0);
+        expect(parseInt( 0.000005)).toBe(0);
+        expect(parseInt(0.0000005)).toBe(5);
     });
 });
